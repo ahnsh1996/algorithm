@@ -76,12 +76,12 @@ ___
 |java|backend|junior|chicken|80|
 |python|backend|senior|chicken|50|
 
-`"java and backend and junior and pizza 100"` : java로 코딩테스트를 봤으며, backend 직군을 선택했고 junior 경력이면서 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 100점 이상 받은 지원자는 1명 입니다.
-`"python and frontend and senior and chicken 200"` : python으로 코딩테스트를 봤으며, frontend 직군을 선택했고, senior 경력이면서 소울 푸드로 chicken을 선택한 지원자 중 코딩테스트 점수를 200점 이상 받은 지원자는 1명 입니다.
-`"cpp and - and senior and pizza 250"` : cpp로 코딩테스트를 봤으며, senior 경력이면서 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 250점 이상 받은 지원자는 1명 입니다.
-`"- and backend and senior and - 150"` : backend 직군을 선택했고, senior 경력인 지원자 중 코딩테스트 점수를 150점 이상 받은 지원자는 1명 입니다.
-`"- and - and - and chicken 100"` : 소울푸드로 chicken을 선택한 지원자 중 코딩테스트 점수를 100점 이상을 받은 지원자는 2명 입니다.
-`"- and - and - and - 150"` : 코딩테스트 점수를 150점 이상 받은 지원자는 4명 입니다.
+* `"java and backend and junior and pizza 100"` : java로 코딩테스트를 봤으며, backend 직군을 선택했고 junior 경력이면서 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 100점 이상 받은 지원자는 1명 입니다.
+* `"python and frontend and senior and chicken 200"` : python으로 코딩테스트를 봤으며, frontend 직군을 선택했고, senior 경력이면서 소울 푸드로 chicken을 선택한 지원자 중 코딩테스트 점수를 200점 이상 받은 지원자는 1명 입니다.
+* `"cpp and - and senior and pizza 250"` : cpp로 코딩테스트를 봤으며, senior 경력이면서 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 250점 이상 받은 지원자는 1명 입니다.
+* `"- and backend and senior and - 150"` : backend 직군을 선택했고, senior 경력인 지원자 중 코딩테스트 점수를 150점 이상 받은 지원자는 1명 입니다.
+* `"- and - and - and chicken 100"` : 소울푸드로 chicken을 선택한 지원자 중 코딩테스트 점수를 100점 이상을 받은 지원자는 2명 입니다.
+* `"- and - and - and - 150"` : 코딩테스트 점수를 150점 이상 받은 지원자는 4명 입니다.
 
 ## 제출답안
 ```python
@@ -108,7 +108,7 @@ def bfs(query, trie):
 
 def solution(info, query):
     answer = []
-    trie = dict() # 쿼리 조건을 키로하는 점수를 저장하는 트라이
+    trie = dict() # 조건을 키로하는 점수를 저장하는 트라이
     info.sort(key=lambda x: int(x.rsplit(' ', 1)[1])) # 점수에 대하여 오름차순 정렬
 
     for i in info: # 키를 따라가며 트라이에 점수 삽입
@@ -163,10 +163,9 @@ def solution(info, query):
 * 소울푸드는 chicken, pizza로 가능한 경우의 수 2
 
 이므로 해시 테이블의 키로 나올 수 있는 경우의 수는 3 × 2 × 2 × 2 = 24가지 이다. 따라서 쿼리의 조건을 탐색하기 위해서 info를 탐색하는 대신 
-조건과 해시 테이블의 키가 매칭되는지를 24번만 수행하여 조건을 탐색할 수 있다.
+조건과 해시 테이블의 키가 매칭되는지를 최대 24번만 수행하여 조건을 탐색할 수 있다.
 
-이러한 해시를 이용한 최적화 방법 역시 조건 탐색에 대한 최적화는 이루어졌지만 트라이 때와 같이 점수 비교에 대한 최적화가 이루어지지 않는다면 여전히 효율성 검사는 실패한다. 따라서 트라이 떄와 
-마찬가지로 이진 탐색을 이용해서 점수 비교 최적화를 적용하여 조합한다면 효율성 검사를 통과할 수 있다.
+이러한 해시를 이용한 최적화 방법 역시 조건 탐색에 대한 최적화는 이루어졌지만 트라이 때와 같이 점수 비교에 대한 최적화가 이루어지지 않는다면 여전히 효율성 검사는 실패한다. 따라서 트라이 때와 마찬가지로 이진 탐색을 이용해서 점수 비교 최적화를 적용하여 조합한다면 효율성 검사를 통과할 수 있다.
 
 이렇게 구현한 방법은 다음과 같다.
 ```python
